@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from 'axios'
+import axios from 'axios'
 import type { Movie } from '../types/movie'
 
 interface MoviesResponse {
@@ -8,7 +8,7 @@ interface MoviesResponse {
 export const fetchMovies = async (query: string): Promise<Movie[]> => {
   const token = import.meta.env.VITE_TMDB_TOKEN
 
-  const response: AxiosResponse<MoviesResponse> = await axios.get(
+  const response = await axios.get<MoviesResponse>(
     'https://api.themoviedb.org/3/search/movie',
     {
       params: {
